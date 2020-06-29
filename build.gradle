@@ -1,0 +1,53 @@
+apply plugin: 'java'
+apply plugin: 'jacoco'
+apply plugin: 'application'
+
+
+mainClassName = 'nickConnectorSponge.Main'
+
+
+//compileJava.options.encoding = 'UTF-16'
+
+// TODO: Change the following to match your information
+group = 'com.example'
+version = '1.0.0-SNAPSHOT'
+description = 'Nick connector sponge'
+
+repositories {
+    jcenter()
+    maven {
+        name = 'sponge-repo'
+        url = 'https://repo.spongepowered.org/maven'
+    }
+    maven {
+        name = 'nucleus-api'
+        url = 'http://repo.drnaylor.co.uk/artifactory/list/minecraft'
+    }
+}
+
+dependencies {
+    testImplementation     'junit:junit:4.13'
+    implementation 'org.spongepowered:spongeapi:7.2.0'
+    implementation 'io.github.nucleuspowered:nucleus-api:1.8.1-S7.1'
+}
+
+jar {
+    manifest { 
+        attributes "Main-Class": "$mainClassName"
+    }  
+
+    //from {
+      //  configurations.runtimeClasspath.collect { it.isDirectory() ? it : zipTree(it) }
+    //}
+}
+
+
+//jar {
+//manifest { 
+//attributes "Main-Class": "$mainClassName"
+//}  
+
+// from {
+// configurations.runtimeClasspath.collect { it.isDirectory() ? it : zipTree(it) }
+//}
+//}
